@@ -9,8 +9,8 @@ def index(request):
         "entries": util.list_entries()
     })
 
-
 def entry(request, title):
+    entry = util.get_entry(title)
     try: return render(request, "encyclopedia/entry.html", {
             "title": title,
             "body": markdown2.markdown(entry)
