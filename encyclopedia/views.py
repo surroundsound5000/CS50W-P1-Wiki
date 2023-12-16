@@ -18,3 +18,19 @@ def entry(request, title):
     except: return render(request, "encyclopedia/notfound.html", {
         "title" : title
     })
+
+def search(request):
+    search = request.GET.get("q")
+    # Render the entry if available
+    #if util.get_entry(search):
+    #     return entry(request, search)
+    entries = util.list_entries()
+    if search in entries:
+        return entry(request, search)
+    results = []
+    for entry in entries:
+        if search in entry: results.append(entry)
+    return render(request, "encyclopedia/search.html",{
+        "search" : search,
+        "results" : results
+    })
