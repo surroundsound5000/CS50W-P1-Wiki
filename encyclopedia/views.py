@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from . import util
 from . import markdown2
+import random
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
@@ -56,10 +57,12 @@ def edit(request):
             "body": this_entry
         })
 
-
 def save_edit(request):
     title = request.GET.get("title")
     content = request.GET.get("content")
     print("Title=", title, "\nContent=", content)
     util.save_entry(title, content)
     return entry(request, title)
+
+def random_page(request):
+    return entry(request, random.choice(util.list_entries()))
