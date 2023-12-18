@@ -7,8 +7,17 @@
 
 {% block body %}
 
-    {% autoescape off %}
-    {{ body }}
-    {% endautoescape %}
+{% autoescape off %}
+{{ body }}
+{% endautoescape %}
+
+<form action="{% url 'edit' %}" class="p-2 m-3">
+    <input hidden type="text" id="title" name="title" value="{{ title }}">
+    <input type="submit" value="Edit" class="btn btn-outline-primary">
+</form>
+
+
+
+
 
 {% endblock %}
