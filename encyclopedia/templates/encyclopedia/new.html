@@ -1,0 +1,30 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+New
+{% endblock %}
+
+
+
+{% block body %}
+<h1>Create a new page</h1>
+
+{% for alert in error %}
+<div class="m-3 w-75 alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Error </strong> {{ alert }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+<form action="save" class="p-2 m-3 w-75 border">
+    <h4><input type="text" id="title" name="title" value="Title"></h4>
+    <textarea id="content" name="content"  rows="6" style="height:100%;" class="my-2 w-100">Enter the page content here in Markdown format.</textarea>
+    <br>
+    <input type="submit" value="Submit">
+</form>
+
+    {% autoescape off %}
+    {{ body }}
+    {% endautoescape %}
+
+{% endblock %}
