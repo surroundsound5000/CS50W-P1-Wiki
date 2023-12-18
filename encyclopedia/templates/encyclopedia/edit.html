@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+<h1> Edit {{ title }} </h1>
+
+<form action="save_edit" class="p-2 m-3 w-75 border">
+    <input hidden type="text" id="title" name="title" value="{{ title }}">
+    <textarea id="content" name="content"  rows="6" style="height:100%;" class="my-2 w-100">{{ body }}</textarea>
+    <input type="submit" class="btn btn-primary" value="Save Changes">
+</form>
+
+{% endblock %}
